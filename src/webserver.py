@@ -1,5 +1,3 @@
-# src/webserver.py
-
 from flask import Flask, request, jsonify, session, g
 from flask_cors import CORS 
 from werkzeug.security import check_password_hash

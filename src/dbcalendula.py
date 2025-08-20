@@ -35,7 +35,6 @@ def init_db():
     conn = sqlite3.connect(DB_PATH)
     conn.execute("PRAGMA foreign_keys = ON;")
     cursor = conn.cursor()
-
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS usuarios (
         id               INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,7 +44,6 @@ def init_db():
         fecha_creacion   DATETIME NOT NULL DEFAULT (datetime('now'))
     );
     """)
-
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS turnos (
         id           INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -61,7 +59,6 @@ def init_db():
         FOREIGN KEY(usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
     );
     """)
-
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS turnos_marcados (
         id          INTEGER PRIMARY KEY AUTOINCREMENT,
