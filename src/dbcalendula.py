@@ -6,7 +6,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import current_app, g
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_PATH = os.path.join(BASE_DIR, "db", "calendula.db")
+# Permite sobreescribir por entorno (p. ej. /var/data/calendula.db en Render Disk)
+DB_PATH = os.environ.get("DB_PATH", os.path.join(BASE_DIR, "db", "calendula.db"))
+os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
 def get_db():
     """

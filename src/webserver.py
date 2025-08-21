@@ -13,13 +13,33 @@ from src.dbcalendula import (
 )
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY", os.urandom(24))
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", os.urandom(24))  # no mostrar!!
 
+# Cookies de sesión aptas para cross-site (GitHub Pages -> Render)
+app.config.update(
+    SESSION_COOKIE_SAMESITE="None",
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True,  # recomendado
+)
 
-print("Secret key en uso:", app.secret_key)
+# CORS: define orígenes permitidos por entorno
+origins = os.environ.get("CORS_ORIGINS", "https://moisescolman.github.io")
+origins = [o.strip() for o in origins.split(",") if o.strip()]
+CORS(app,
+    resources={r"/api/*": {"origins": origins}},
+    supports_credentials=True)
 
-# Habilita CORS para todas las rutas /api/*
-CORS(app, resources={r"/api/*": {"origins": "https://moisescolman.github.io/Calendula_frontend/"}}, supports_credentials=True)
+# Asegura que la DB existe también bajo Gunicorn
+from src.dbcalendula import init_db
+with app.app_context():
+     try:
+         init_db()
+     except Exception as e:
+         print("init_db():", e)
+
+@app.route("/healthz")
+def healthz():
+     return {"status": "ok"}, 200
 
 app.teardown_appcontext(close_db)
 

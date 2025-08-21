@@ -1,2 +1,4 @@
+__pycache__/
+*.pyc
+db/*.db
 .venv
-__pycache__
