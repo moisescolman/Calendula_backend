@@ -19,7 +19,7 @@ app.secret_key = os.environ.get("FLASK_SECRET_KEY", os.urandom(24))
 print("Secret key en uso:", app.secret_key)
 
 # Habilita CORS para todas las rutas /api/*
-CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}}, supports_credentials=True)
+CORS(app, resources={r"/api/*": {"origins": "https://moisescolman.github.io/Calendula_frontend/"}}, supports_credentials=True)
 
 app.teardown_appcontext(close_db)
 
