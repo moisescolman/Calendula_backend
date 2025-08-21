@@ -1,12 +1,12 @@
 # Calendula (Backend)
 
-## 📌 Descripción
+## Descripción
 El backend de **Calendula** está desarrollado con **Python (Flask)** y gestiona la lógica de negocio, autenticación de usuarios y persistencia de datos mediante una base de datos **SQLite**.  
 Provee una serie de **endpoints RESTful** que son consumidos por el frontend, permitiendo a los usuarios registrarse, iniciar sesión, gestionar su perfil, crear/modificar turnos y marcar turnos en un calendario.
 
 ---
 
-## ⚙️ Tecnologías utilizadas
+## Tecnologías utilizadas
 - **Python 3.11+**
 - **Flask** – framework principal del servidor
 - **Flask-CORS** – manejo de CORS para comunicación con el frontend
@@ -17,7 +17,7 @@ Provee una serie de **endpoints RESTful** que son consumidos por el frontend, pe
 
 ---
 
-## 📂 Estructura del proyecto
+## Estructura del proyecto
 ```
 CALENDULA-Backend/
 │
@@ -35,7 +35,7 @@ CALENDULA-Backend/
 
 ---
 
-## 🗄️ Estructura de la base de datos
+## Estructura de la base de datos
 El backend define **tres tablas principales** en SQLite:
 
 1. **usuarios**
@@ -60,8 +60,8 @@ El backend define **tres tablas principales** en SQLite:
 
 ---
 
-## 🔑 Endpoints principales
-### 👤 Usuarios
+## Endpoints principales
+### Usuarios
 - `POST /api/usuarios` → Registrar usuario
 - `POST /api/login` → Iniciar sesión
 - `POST /api/logout` → Cerrar sesión
@@ -70,20 +70,20 @@ El backend define **tres tablas principales** en SQLite:
 - `PUT /api/usuarios/me/contrasena` → Cambiar contraseña
 - `DELETE /api/usuarios/me` → Eliminar cuenta
 
-### 📅 Turnos
+### Turnos
 - `GET /api/turnos` → Listar turnos del usuario
 - `POST /api/turnos` → Crear turno
 - `PUT /api/turnos/<id>` → Modificar turno
 - `DELETE /api/turnos/<id>` → Eliminar turno
 
-### 🗓️ Turnos marcados
+### Turnos marcados
 - `GET /api/turnos_marcados` → Listar turnos marcados
 - `POST /api/turnos_marcados` → Marcar turno en una fecha
 - `DELETE /api/turnos_marcados/<id>` → Desmarcar turno
 
 ---
 
-## ▶️ Instrucciones de ejecución
+## Instrucciones de ejecución
 1. **Clonar el repositorio del backend**
    ```bash
    git clone <url-repositorio>
@@ -114,7 +114,7 @@ El backend define **tres tablas principales** en SQLite:
 
 ---
 
-## 🔒 Autenticación y sesiones
+## Autenticación y sesiones
 - Se utiliza el sistema de **sesiones de Flask** para mantener la autenticación del usuario.  
 - Al iniciar sesión, se guarda `session["user_id"]`, que luego se valida en cada endpoint protegido.  
 - El **CORS** está configurado para permitir únicamente solicitudes desde:
@@ -125,7 +125,7 @@ El backend define **tres tablas principales** en SQLite:
 
 ---
 
-## ✅ Funcionalidades implementadas
+## Funcionalidades implementadas
 - Registro y login de usuarios con **contraseñas encriptadas**
 - CRUD de turnos (con colores, horarios y abreviaturas personalizadas)
 - Registro automático de **5 turnos predeterminados** (Mañana, Tarde, Noche, Descanso, Vacaciones) al crear un usuario
