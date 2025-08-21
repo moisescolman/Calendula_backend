@@ -86,15 +86,20 @@ El backend define **tres tablas principales** en SQLite:
 ## Instrucciones de ejecución
 1. **Clonar el repositorio del backend**
    ```bash
-   git clone <url-repositorio>
+   git clone https://github.com/moisescolman/Calendula_backend
    cd CALENDULA-Backend
    ```
 
 2. **Crear entorno virtual e instalar dependencias**
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate   # Linux / Mac
-   .venv\Scripts\activate      # Windows
+   # Windows
+   py -3 -m venv .venv
+   .venv/Scripts/activate
+   pip install -r requeriments.txt
+
+   # Linux / Mac
+   python3 -m venv .venv
+   . .venv/bin/activate   
    pip install -r requirements.txt
    ```
 
